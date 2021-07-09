@@ -1,0 +1,32 @@
+{
+  "name": "landing-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass --watch sass:css",
+    "compile:sass": "sass sass:css",
+    "purge:main": "purgecss -css css/main.css --content *.html --output css/main.purged.css",
+    "concat:css": "concat -o css/style.concat.css css/main.purged.css css/js-components.css",
+    "prefix:css": "postcss css/style.concat.css --use autoprefixer -o css/style.prefix.css",
+    "compress:css": "postcss css/style.prefix.css > dist/style.css",
+    "build:css": "npm-run-all compile:sass purge:main concat:css prefix:css compress:css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.3",
+    "autoprefixer": "^10.2.6",
+    "bootstrap": "^5.0.2",
+    "concat": "^1.0.3",
+    "css-minify": "^1.1.0",
+    "cssnano": "^5.0.6",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "sass": "^1.35.1"
+  },
+  "dependencies": {
+    "clean-css": "^5.1.3"
+  }
+}
